@@ -11,15 +11,22 @@ const data_templete = {
 
 console.log("executing 'winget upgrade'...");
 const winget_list=child_process.execFileSync("winget",["upgrade"]).toString().split(line_feed);
-const id_start = winget_list[0].indexOf("ID") - winget_list[0].indexOf("名前")+4;
+const id_start = winget_list[0].indexOf("ID") - winget_list[0].indexOf("名前")+2;
 const list = winget_list
     .slice(2, -3)
     .map((element) =>
-        element.split(" ").filter(filter_space).reduce(assemble_data, data_templete)
-    );
+        element
+            .split(" ")
+            .filter(filter_space)
+            .reverse()
+            .reduce(assemble_data, { ...data_templete })
+    )
+    .map((element) => {
+        element.name=element.name.trimEnd();
+        return element;
+    });
 
 
-console.log(id_start);
 require("fs").writeFileSync("./list.json", JSON.stringify(list));
 
 function filter_space(element){
@@ -30,7 +37,27 @@ function filter_space(element){
     }
 }
 
-
 function assemble_data(data,segment,index){
-    console.log(segment,segment.length,index);
+    //console.log(data,segment,index);
+    switch(index){
+        case 0:
+            data.source=segment;
+            break;
+
+        case 1:
+            data.new_version=segment;
+            break;
+
+        case 2:
+            data.previous_version=segment;
+            break;
+
+        case 3:
+            data.ID=segment;
+            break;
+
+        default:
+            data.name = segment + " " + data.name;
+    }
+    return data;
 }
