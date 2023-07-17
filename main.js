@@ -57,7 +57,7 @@ function assemble_data(data,segment,index){
             break;
 
         default:
-            data.name = segment + " " + data.name;
+            data.name = `${segment} ${data.name}`.trimEnd();
     }
     return data;
 }
