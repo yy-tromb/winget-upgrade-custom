@@ -55,7 +55,7 @@ let app_filters;
         })
     );
     console.info(upgrading_apps);
-    console.info("upgrading start...");
+    console.info("start upgrading...");
     await Promise.allSettled(upgrading_promises);
 })();
 
