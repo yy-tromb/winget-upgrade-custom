@@ -8,11 +8,12 @@ const data_templete = {
     new_version: "",
     source: "",
 };
+const app_filter=JSON.parse(fs.readFileSync("./app_filter.json").toString());
 
 console.log("executing 'winget upgrade'...");
 const winget_list=child_process.execFileSync("winget",["upgrade"]).toString().split(line_feed);
 const id_start = winget_list[0].indexOf("ID") - winget_list[0].indexOf("名前")+2;
-const list = winget_list
+const all_list = winget_list
     .slice(2, -3)
     .map((element) =>
         element
@@ -22,6 +23,12 @@ const list = winget_list
             .reduce(assemble_data, { ...data_templete })
     );
 
+const list=all_list.filter(filter_specified);
+const required_upgrade=list.length;
+let upgrading=0;
+for(let i=0;i<required_upgrade;i++){
+    //
+}
 
 require("fs").writeFileSync("./list.json", JSON.stringify(list));
 
@@ -56,4 +63,8 @@ function assemble_data(data,segment,index){
             data.name = `${segment} ${data.name}`.trimEnd();
     }
     return data;
+}
+
+function filter_specified(app_data){
+    //
 }
