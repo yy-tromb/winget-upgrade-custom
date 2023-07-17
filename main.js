@@ -1,9 +1,11 @@
-const { kMaxLength } = require("buffer");
+const util = require("util");
 const child_process = require("child_process");
 const fs = require("fs");
-const { key } = require("localforage");
+const cp_execFile = util.promisify(child_process.execFile);
 
 const line_feed = "\r\n"; //if you get any problems, this may be the reason.
+const upgrading_max = 3;
+
 const data_templete = {
     name: "",
     ID: "",
@@ -33,15 +35,28 @@ let app_filters;
 
 (async () => {
     app_filters = await app_filters_promise;
-    console.log(app_filters);
     const list = all_list.filter(filter_apps);
     const required_upgrade = list.length;
-    let upgrading = 0;
+    const upgrading_promises = Array.from({ length: upgrading_max }, () =>
+        Promise.resolve()
+    );
+    const upgrading_apps = Array.from({ length: upgrading_max }, () => []);
     for (let i = 0; i < required_upgrade; i++) {
-        //
+        const queue = i % upgrading_max;
+        upgrading_promises[queue] = upgrading_promises[queue].then(() => {
+            console.info(`upgrading ${list[i].name}...`);
+            return cp_execFile("winget", ["upgrade", "--id", list[i].ID]);
+        });
+        upgrading_apps[queue].push(list[i]);
     }
-
-    fs.writeFileSync("./list.json", JSON.stringify(list));
+    upgrading_promises.map((app) =>
+        app.catch((error) => {
+            throw error;
+        })
+    );
+    console.info(upgrading_apps);
+    console.info("upgrading start...");
+    await Promise.allSettled(upgrading_promises);
 })();
 
 //functions
@@ -94,7 +109,3 @@ function filter_apps(app_data) {
     }
     return true;
 }
-
-function check_apps() {}
-
-function has_filter() {}
