@@ -15,7 +15,8 @@ for example
         "ID": "Google.AndroidStudio"  
     },  
     {  
-        "ID":"Mozilla.Firefox.DeveloperEdition"  
+        "ID":"Mozilla.Firefox.DeveloperEdition"
+        "source":"winget"  
     }  
 ]  
 ```
