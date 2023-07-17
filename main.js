@@ -21,8 +21,6 @@ const winget_list = child_process
     .execFileSync("winget", ["upgrade"])
     .toString()
     .split(line_feed);
-const id_start =
-    winget_list[0].indexOf("ID") - winget_list[0].indexOf("名前") + 2;
 const all_list = winget_list.slice(2, -3).map((element) =>
     element
         .split(" ")
