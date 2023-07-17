@@ -56,7 +56,7 @@ let app_filters;
     );
     console.info(upgrading_apps);
     console.info("start upgrading...");
-    await Promise.allSettled(upgrading_promises);
+    await Promise.allSettled(upgrading_promises).then(() => console.info("Sucessed upgrading!"));
 })();
 
 //functions
