@@ -4,8 +4,11 @@
   "description": "winget upgrade customly and in parallel",
   "main": "main.js",
   "scripts": {
-    "main":"node main.js"
+    "main": "node main.js"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nexe": "^4.0.0-rc.2"
+  }
 }
