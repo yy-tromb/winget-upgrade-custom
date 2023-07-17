@@ -1,7 +1,7 @@
 # winget-upgrade-custom  
 winget upgrade customly and in parallel
 
-# Installation  
+# for use  
 This is runned on Node.js  
 or [binary here](https://github.com/yy-tromb/winget-upgrade-custom/releases/tag/untagged-bfa9c874793dc21ad98c)
 
