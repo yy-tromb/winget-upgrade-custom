@@ -20,11 +20,7 @@ const list = winget_list
             .filter(filter_space)
             .reverse()
             .reduce(assemble_data, { ...data_templete })
-    )
-    .map((element) => {
-        element.name=element.name.trimEnd();
-        return element;
-    });
+    );
 
 
 require("fs").writeFileSync("./list.json", JSON.stringify(list));
