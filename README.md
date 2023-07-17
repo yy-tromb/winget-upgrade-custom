@@ -7,7 +7,8 @@ or [binary here](https://github.com/yy-tromb/winget-upgrade-custom/releases/tag/
 
 ## Usage  
 make `app_filters.json`,and ignored them.  
-for example ```app_filters.json
+for example  
+```app_filters.json
 [  
     {  
         "name": "Android Studio",  
