@@ -36,7 +36,7 @@ let app_filters;
     const list = all_list.filter(filter_apps);
     const required_upgrade = list.length;
     const upgrading_promises = Array.from({ length: upgrading_max }, () =>
-        Promise.resolve()
+        Promise.resolve() //initial for .then()
     );
     const upgrading_apps = Array.from({ length: upgrading_max }, () => []);
     for (let i = 0; i < required_upgrade; i++) {
