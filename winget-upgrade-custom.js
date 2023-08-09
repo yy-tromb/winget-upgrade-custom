@@ -5,7 +5,7 @@ const path = require("path");
 const cp_execFile = util.promisify(child_process.execFile);
 
 let app_filter_path;
-if (process.argv.length > 2 && !process.argv[2].startsWith("--")) {
+if (process.argv.length > 2) {
     app_filter_path = process.argv[2];
 } else {
     app_filter_path = "./app_filter.json";
