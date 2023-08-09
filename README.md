@@ -1,14 +1,18 @@
 # winget-upgrade-custom  
 winget upgrade customly and in parallel
 
-# for use  
+## for use  
+
 This is runned on Node.js  
 or [binary here](https://github.com/yy-tromb/winget-upgrade-custom/releases/tag/untagged-bfa9c874793dc21ad98c)
 
 ## Usage  
-make `app_filters.json`,and this tool ignore that written in that file.  
-for example  
-```app_filters.json
+make `app_filter.json`,and this tool ignore that written in that file.  
+or execute like this `node winget-upgrade-custom.js "path_to_app_filter"`  
+
+### 　for example  
+
+```app_filter.json
 [  
     {  
         "name": "Android Studio",  

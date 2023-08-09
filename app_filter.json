@@ -1,0 +1,25 @@
+[
+    {
+        "name": "MuseScore 3"
+    },
+    {
+        "name": "Android Studio",
+        "ID": "Google.AndroidStudio"
+    },
+    {
+        "ID": "Mozilla.Firefox.DeveloperEdition"
+    },
+    {
+        "name": "Docker Desktop",
+        "ID": "Docker.DockerDesktop"
+    },
+    {
+        "ID": "Microsoft.VisualStudioCode"
+    },
+    {
+        "ID": "Clement.bottom"
+    },
+    {
+        "ID": "Google.Chrome"
+    }
+]

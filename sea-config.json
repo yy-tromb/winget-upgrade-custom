@@ -1,1 +1,1 @@
-{ "main": "main.js", "output": "sea-prep.blob" }
+{ "main": "winget-upgrade-custom.js", "output": "sea-prep.blob" }
