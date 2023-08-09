@@ -129,6 +129,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-/app_filters.json
+/app_filter.json
 /sea-prep.blob
 /winget-upgrade-custom.exe
