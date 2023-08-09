@@ -7,7 +7,7 @@ This is runned on Node.js
 or [binary here](https://github.com/yy-tromb/winget-upgrade-custom/releases)
 
 ## Usage  
-make `app_filter.json`,and this tool ignore that written in that file.  
+make `app_filter.json`,and this tool ignore the app that written in that file.  
 or execute like this `node winget-upgrade-custom.js "path_to_app_filter"`  
 
 ### 　for example  
