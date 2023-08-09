@@ -4,7 +4,7 @@ winget upgrade customly and in parallel
 ## for use  
 
 This is runned on Node.js  
-or [binary here](https://github.com/yy-tromb/winget-upgrade-custom/releases/tag/untagged-bfa9c874793dc21ad98c)
+or [binary here](https://github.com/yy-tromb/winget-upgrade-custom/releases)
 
 ## Usage  
 make `app_filter.json`,and this tool ignore that written in that file.  
