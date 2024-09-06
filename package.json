@@ -1,6 +1,6 @@
 {
   "name": "winget-upgrade-custom",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "winget upgrade customly and in parallel",
   "main": "main.js",
   "scripts": {
