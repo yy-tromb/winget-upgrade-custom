@@ -6,6 +6,6 @@
   "scripts": {
     "main": "node main.js"
   },
-  "author": "",
+  "author": "yy-tromb",
   "license": "MIT"
 }
