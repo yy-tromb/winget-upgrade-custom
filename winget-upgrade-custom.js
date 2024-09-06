@@ -29,14 +29,21 @@ const winget_list = child_process
     .execFileSync("winget", ["upgrade"])
     .toString()
     .split(line_feed);
-const all_list = winget_list.slice(2, -3).map((element) =>
+let slice_start = 2;
+let slice_end = -2;
+if (/-+/.test(winget_list[2])) {
+    slice_start += 1;
+}
+if (!winget_list[winget_list.length - 2].includes(" ")) {
+    slice_end -= 1;
+}
+const all_list = winget_list.slice(slice_start, slice_end).map((element) =>
     element
         .split(" ")
         .filter(filter_space)
         .reverse()
         .reduce(assemble_data, { ...data_templete })
 );
-
 
 //update
 
@@ -46,8 +53,9 @@ let app_filters;
     app_filters = await app_filters_promise;
     const list = all_list.filter(filter_apps);
     const required_upgrade = list.length;
-    const upgrading_promises = Array.from({ length: upgrading_max }, () =>
-        Promise.resolve() //initial for .then()
+    const upgrading_promises = Array.from(
+        { length: upgrading_max },
+        () => Promise.resolve() //initial for .then()
     );
     const upgrading_apps = Array.from({ length: upgrading_max }, () => []);
     for (let i = 0; i < required_upgrade; i++) {
@@ -65,7 +73,9 @@ let app_filters;
     );
     console.info(upgrading_apps);
     console.info("start upgrading...");
-    await Promise.allSettled(upgrading_promises).then(() => console.info("Successed upgrading!"));
+    await Promise.allSettled(upgrading_promises).then(() =>
+        console.info("Successed upgrading!")
+    );
 })();
 
 //functions
