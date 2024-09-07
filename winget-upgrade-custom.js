@@ -24,7 +24,7 @@ const data_templete = {
 
 const app_filters_promise = read_json_async(app_filter_path);
 
-console.log("executing 'winget upgrade'...");
+console.log("executing 'winget upgrade' command...");
 const winget_list = child_process
     .execFileSync("winget", ["upgrade"])
     .toString()
@@ -34,7 +34,7 @@ let slice_end = -2;
 if (/-+/.test(winget_list[2])) {
     slice_start += 1;
 }
-if (!winget_list[winget_list.length - 2].includes(" ")) {
+if (winget_list[winget_list.length - 3].match(/ /g).length<2) {
     slice_end -= 1;
 }
 const all_list = winget_list.slice(slice_start, slice_end).map((element) =>
